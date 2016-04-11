@@ -1,0 +1,25 @@
+#Student Averages
+#Capers Lever
+#CSCI 333 Applied Systems
+#Date Created: 04/01/2015
+#Date Modified: 04/11/2016
+#Grade:87
+#Comments: Create text file called input.txt formatted first last studentid then any amount of grades
+#then run this script, it will write back the averages for the grades of the students to a file named
+#output.txt
+#!/usr/bin/perl
+open(IN,"<input.txt");
+open(OUT, ">output.txt") or die "Can't Make File";
+while($line=<IN>){
+ $count = 0;
+ $total = 0;
+ ($first, $last, $id, @grades) = split (/\s/, $line); #splits at the spaces
+ foreach $grade(@grades) {
+  $total = $total + $grade;
+  $count++;
+ }
+ $average = $total / $count;
+ #print OUT "$first, $last, $id, $average\n";
+ print "$first, $last, $id, $average\n";
+}
+close OUT;
